@@ -1,0 +1,6 @@
+RequireJS
+http://tech.pro/tutorial/1156/using-requirejs-in-an-aspnet-mvc-application
+
+AngularJS
+https://www.simple-talk.com/blogs/2013/10/16/angularjs-on-top-of-asp-net-moving-the-mvc-framework-out-to-the-browser/
+https://github.com/ldematte/SPASSOAuthClientExample

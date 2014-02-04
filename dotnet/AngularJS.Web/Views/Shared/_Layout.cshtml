@@ -1,0 +1,31 @@
+﻿@using System.Web.UI.WebControls
+@using AngularJS.Web.Utils
+<!DOCTYPE html>
+
+<html ng-app="App">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Content/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap-theme.css" />
+
+    @RenderSection("style")
+
+    <script type="text/javascript" src="/Scripts/angular.js"></script>
+    <script type="text/javascript" src="/Scripts/ng/App.js"></script>
+    <script type="text/javascript" src="/Scripts/ng/Controllers/@(Html.GetControllerName())Controller.js"></script>
+
+    @RenderSection("script")
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body ng-controller="@(Html.GetControllerName())Controller">
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
+</body>
+</html>

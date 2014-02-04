@@ -1,0 +1,91 @@
+﻿@model dynamic
+
+@section style {
+    <link rel="stylesheet" type="text/css" href="/Content/Views/ExpensesView.css" />
+    @*<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />*@
+}
+
+@section script {
+    @*<script type="text/javascript" src="/Scripts/Controllers/ExpensesController.js"></script>*@
+    @*	<script type="text/javascript" src="js/jsondiffpatch.js"></script>
+	<script type="text/javascript" src="js/diff_match_patch_uncompressed.js"></script>
+	<script type="text/javascript" src="js/ctrl/GastosCtrl.js"></script>
+	<script type="text/javascript" src="js/ctrl/DialogCtrl.js"></script>*@
+
+}
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="row">
+    <h1>Expenses</h1>
+</div>
+<div class="row well">
+    <h2>Filter</h2>
+    <div class="row">
+        <label for="dsc" class="span2">Description</label>
+        <input type="text" name="dsc" class="span4" ng-model="search.description" />
+    </div>
+    <!--<div class="row">
+					<label for="valor" class="span2">Amount</label>
+					<input type="number" name="valor" class="span4" ng-model="search.amount" />
+				</div>-->
+</div>
+<div class="row well">
+    <h2>List</h2>
+    <table class="table table-bordered table-striped" ng-show="fexpenses.length > 0">
+        <thead>
+            <tr>
+                <th class="span2">Date</th>
+                <th>Description</th>
+                <th class="span2">Amount</th>
+                <th class="span2"></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="expense in fexpenses = (expenses | filter:search)">
+            <td>{{expense.date}}</td>
+            <td>{{expense.description}}</td>
+            <td>{{expense.amount}}</td>
+            <td>
+                <button class="btn btn-mini btn-warning" ng-click="removeExpense(expense)">
+                    <i class="icon-trash icon-white"></i>
+                </button>
+                <button class="btn btn-mini btn-success" ng-click="editExpense(expense)">
+                    <i class="icon-pencil icon-white"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <p ng-hide="fexpenses.length > 0">
+        <i class="icon-info-sign"></i>
+        No matches
+    </p>
+    <div id="buttons">
+        <button class="btn" ng-click="addExpense()">
+            <i class="icon-plus"></i>
+            New
+        </button>
+        <button class="btn btn-primary pull-right" ng-click="saveExpenses()">
+            <i class="icon-ok icon-white"></i>
+            Save
+        </button>
+    </div>
+</div>
+<div id="expenses-dialog" class="hidden">
+    <form name="formexpense" novalidate>
+        <div class="modal-header">
+            <h1>New Expense</h1>
+        </div>
+        <div class="modal-body">
+            <label for="description">Description</label>
+            <input type="text" name="description" ng-model="expense.description" required />
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" ng-model="expense.amount" required />
+        </div>
+        <div class="modal-footer">
+            <button ng-click="save()" class="btn btn-primary" ng-disabled="formexpense.$invalid">Save</button>
+            <button ng-click="close()" class="btn">Close</button>
+        </div>
+    </form>
+</div>
