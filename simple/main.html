@@ -1,93 +1,93 @@
 <!doctype html>
 <html ng-app="app-poc">
-	<head>
-		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-		<script type="text/javascript" src="js/angular.js"></script>
-		<script type="text/javascript" src="js/ui-bootstrap-tpls-0.3.0.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/jsondiffpatch.js"></script>
-		<script type="text/javascript" src="js/diff_match_patch_uncompressed.js"></script>
-		<script type="text/javascript" src="js/ctrl/GastosCtrl.js"></script>
-		<script type="text/javascript" src="js/ctrl/DialogCtrl.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
-		<link rel="stylesheet" type="text/css" href="css/view/GastosView.css" />
-	</head>
-	<body ng-controller="GastosCtrl">
-		<div class="container">
-			<div class="row">
-				<h1>Gastos</h1>
-			</div>
-			<div class="row well">
-				<h2>Filtro</h2>
-				<div class="row">
-					<label for="dsc" class="span2">Descripcion</label>
-					<input type="text" name="dsc" class="span4" ng-model="search.descripcion" />
-				</div>
-				<!--<div class="row">
-					<label for="valor" class="span2">Valor</label>
-					<input type="number" name="valor" class="span4" ng-model="search.valor" />
-				</div>-->
-			</div>
-			<div class="row well">
-				<h2>Listado</h2>
-				<table class="table table-bordered table-striped" ng-show="fgastos.length > 0">
-					<thead>
-						<tr>
-							<th class="span2">Fecha</th>
-							<th>Descripcion</th>
-							<th class="span2">Valor</th>
-							<th class="span2"></th>
-						</tr>
-					</thead>
-					<tr ng-repeat="gasto in fgastos = (gastos | filter:search)">
-						<td>{{gasto.fecha}}</td>
-						<td>{{gasto.descripcion}}</td>
-						<td>{{gasto.valor}}</td>
-						<td>
-							<button class="btn btn-mini btn-warning" ng-click="quitarGasto(gasto)">
-								<i class="icon-trash icon-white"></i>
-							</button>
-							<button class="btn btn-mini btn-success" ng-click="editarGasto(gasto)">
-								<i class="icon-pencil icon-white"></i>
-							</button>
-						</td>
-					</tr>
-				</table>
-				<p ng-hide="fgastos.length > 0">
-					<i class="icon-info-sign"></i>
-					No hay coincidencias
-				</p>
-				<div id="botonera">
-					<button class="btn" ng-click="agregarGasto()">
-						<i class="icon-plus"></i>
-						Nuevo
-					</button>
-					<button class="btn btn-primary pull-right" ng-click="guardarGastos()">
-						<i class="icon-ok icon-white"></i>
-						Guardar
-					</button>
-				</div>
-			</div>
-		</div>
-		<div id="gastos-dialog" class="hidden">
-			<form name="formGasto" novalidate>
-				<div class="modal-header">
-					<h1>Nuevo gasto</h1>
-				</div>
-				<div class="modal-body">
-						<label for="descripcion">Descripcion</label>
-						<input type="text" name="descripcion" ng-model="gasto.descripcion" required />
-						<label for="valor">Valor</label>
-						<input type="number" name="valor" ng-model="gasto.valor" required />
-				</div>
-				<div class="modal-footer">
-					<button ng-click="guardar()" class="btn btn-primary" ng-disabled="formGasto.$invalid">Guardar</button>
-					<button ng-click="cerrar()" class="btn" >Cerrar</button>
-				</div>
-			</form>
-		</div>
-	</body>
+    <head>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/angular.js"></script>
+        <script type="text/javascript" src="js/ui-bootstrap-tpls-0.3.0.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jsondiffpatch.js"></script>
+        <script type="text/javascript" src="js/diff_match_patch_uncompressed.js"></script>
+        <script type="text/javascript" src="js/ctrl/GastosCtrl.js"></script>
+        <script type="text/javascript" src="js/ctrl/DialogCtrl.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="css/view/GastosView.css" />
+    </head>
+    <body ng-controller="GastosCtrl">
+        <div class="container">
+            <div class="row">
+                <h1>Gastos</h1>
+            </div>
+            <div class="row well">
+                <h2>Filtro</h2>
+                <div class="row">
+                    <label for="dsc" class="span2">Descripcion</label>
+                    <input type="text" name="dsc" class="span4" ng-model="search.descripcion" />
+                </div>
+                <!--<div class="row">
+                    <label for="valor" class="span2">Valor</label>
+                    <input type="number" name="valor" class="span4" ng-model="search.valor" />
+                </div>-->
+            </div>
+            <div class="row well">
+                <h2>Listado</h2>
+                <table class="table table-bordered table-striped" ng-show="fgastos.length > 0">
+                    <thead>
+                        <tr>
+                            <th class="span2">Fecha</th>
+                            <th>Descripcion</th>
+                            <th class="span2">Valor</th>
+                            <th class="span2"></th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="gasto in fgastos = (gastos | filter:search)">
+                        <td>{{gasto.fecha}}</td>
+                        <td>{{gasto.descripcion}}</td>
+                        <td>{{gasto.valor}}</td>
+                        <td>
+                            <button class="btn btn-mini btn-warning" ng-click="quitarGasto(gasto)">
+                                <i class="icon-trash icon-white"></i>
+                            </button>
+                            <button class="btn btn-mini btn-success" ng-click="editarGasto(gasto)">
+                                <i class="icon-pencil icon-white"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <p ng-hide="fgastos.length > 0">
+                    <i class="icon-info-sign"></i>
+                    No hay coincidencias
+                </p>
+                <div id="botonera">
+                    <button class="btn" ng-click="agregarGasto()">
+                        <i class="icon-plus"></i>
+                        Nuevo
+                    </button>
+                    <button class="btn btn-primary pull-right" ng-click="guardarGastos()">
+                        <i class="icon-ok icon-white"></i>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="gastos-dialog" class="hidden">
+            <form name="formGasto" novalidate>
+                <div class="modal-header">
+                    <h1>Nuevo gasto</h1>
+                </div>
+                <div class="modal-body">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" name="descripcion" ng-model="gasto.descripcion" required />
+                        <label for="valor">Valor</label>
+                        <input type="number" name="valor" ng-model="gasto.valor" required />
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="guardar()" class="btn btn-primary" ng-disabled="formGasto.$invalid">Guardar</button>
+                    <button ng-click="cerrar()" class="btn" >Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
